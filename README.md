@@ -192,3 +192,21 @@ Atlas atlas-a1hth3-shard-0 [primary] dynamodb> db.customerKinesis.find({customer
   }
 ]
 `````
+
+
+
+### CDC Test
+DynamoDB 에서 데이터를 변경 하고 저장 합니다.
+  
+<img src="/images/image09.png" width="90%" height="90%">     
+
+내부 데이터 값 수정 후 저장 (혹은 데이터 추가 생성)   
+
+Lambda function을 선택 한후 Monitor에서 View Logs in CloudWatch를 선택 합니다. S3 에 저장된 로그를 확인 합니다.
+
+
+<img src="/images/image10.png" width="90%" height="90%">     
+
+Atlas에 변경된 데이터를 확인 합니다.
+
+<img src="/images/image11.png" width="90%" height="90%">    
