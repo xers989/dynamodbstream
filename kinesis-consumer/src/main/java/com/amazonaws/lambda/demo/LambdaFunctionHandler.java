@@ -38,13 +38,14 @@ public class LambdaFunctionHandler implements RequestHandler<KinesisEvent, Integ
     private static final String MODIFY = "MODIFY";
     private static final String REMOVE = "REMOVE";
     //dynamo.5qjlg.mongodb.net/myFirstDatabase
- 
-    private static final String connectionString = "mongodb+srv://main_user:******@dynamo.5qjlg.mongodb.net/dynamodb?retryWrites=true&w=majority";
 //cluster1.5qjlg.mongodb.net/myFirstDatabase
     @Override
     public Integer handleRequest(KinesisEvent event, Context context) {
         //context.getLogger().log("Input: " + event.getRecords().size());
     	context.getLogger().log("Loaded Data Record is "+event.getRecords().size());
+		String connectionString = System.getenv("Atlasconnection");
+		String atlasDatabase = System.getenv("Atlasdatabase");
+		String atlasCollection = System.getenv("Atlascollection");
 
     	int iCount = 0;
     	int errorCnt = 0;
@@ -58,8 +59,8 @@ public class LambdaFunctionHandler implements RequestHandler<KinesisEvent, Integ
         {
         	MongoClient mongoClient = MongoClients.create(connectionString);
 
-        	MongoDatabase dynamodb = mongoClient.getDatabase("dynamodb");
-            MongoCollection<Document> lambdaCollection = dynamodb.getCollection("customerKinesis");
+        	MongoDatabase dynamodb = mongoClient.getDatabase(atlasDatabase);
+            MongoCollection<Document> lambdaCollection = dynamodb.getCollection(atlasCollection);
             
             Document newImage = null;  
             JsonParser parser = new JsonParser();

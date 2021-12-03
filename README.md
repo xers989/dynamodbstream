@@ -35,6 +35,11 @@ Code를 업로드 하고 Runtime settings에서 맞는 class handler 를 입력 
 
 포함된 Java Source의 Handler class 는 com.amazonaws.lambda.demo.LambdaFunctionHandler 입니다.
 
+Atlas 접근을 위한 연결 정보를 환경 변수로 등록 하여 줍니다.
+<img src="/images/image08.png" width="90%" height="90%"> 
+
+
+
 ### Lambda Java Code
 Maven 기반의 프로젝트로 connectionString 을 수정 한 후 build 하여 줍니다.
 mapToList 함후는 DynamoDB 의 데이터 포멧을 JSON으로 변경 하여 줍니다.
